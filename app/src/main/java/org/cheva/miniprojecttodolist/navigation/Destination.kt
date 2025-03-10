@@ -6,4 +6,7 @@ import kotlinx.serialization.Serializable
 object RegisterScreen
 
 @Serializable
-object DashboardScreen
+object LoginScreen
+
+@Serializable
+data class DashboardScreen(val name: String)

@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import org.cheva.miniprojecttodolist.R
 import org.cheva.miniprojecttodolist.navigation.DashboardScreen
+import org.cheva.miniprojecttodolist.navigation.LoginScreen
 import org.cheva.miniprojecttodolist.ui.components.OutlinedTextField
 import org.cheva.miniprojecttodolist.ui.components.ResultDialog
 import org.cheva.miniprojecttodolist.ui.components.SecureTextField
@@ -39,7 +40,7 @@ fun RegisterScreen(
     LaunchedEffect(state.successRegister) {
         if (state.successRegister){
             delay(1000)
-            onNavigate(DashboardScreen)
+            onNavigate(LoginScreen)
         }
     }
     Scaffold {
@@ -97,12 +98,6 @@ fun RegisterScreen(
                 onClick = { onEvent(RegisterEvent.OnRegisterClicked) }
             ) {
                 Text(stringResource(R.string.register_headline))
-            }
-            TextButton(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = { onNavigate(TODO("Navigasi ke LoginScreen")) }
-            ) {
-                Text(stringResource(R.string.to_register))
             }
         }
     }

@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import org.cheva.miniprojecttodolist.DataClass.Driver
+import org.cheva.miniprojecttodolist.MainActivity
 
 class RegisterViewModel: ViewModel() {
 
@@ -71,10 +73,19 @@ class RegisterViewModel: ViewModel() {
             return
         }
 
-        _state.update {
-            it.copy(message = "Register Successful", successRegister = true)
+        if (Driver.checkAvailability(
+                state.value.name,
+                state.value.email,
+                state.value.password
+            )) {
+            Driver.addUser(
+                state.value.name,
+                state.value.email,
+                state.value.password
+            )
+            _state.update {
+                it.copy(message = "Register Successful", successRegister = true)
+            }
         }
-
     }
-
 }
