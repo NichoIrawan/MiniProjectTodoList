@@ -40,7 +40,7 @@ fun LoginScreen(
     LaunchedEffect(state.successLogin) {
         if (state.successLogin){
             delay(1000)
-            onNavigate(DashboardScreen)
+            onNavigate(DashboardScreen(state.name))
         }
     }
     Scaffold {
