@@ -4,8 +4,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import org.cheva.miniprojecttodolist.DataClass.Driver
-import org.cheva.miniprojecttodolist.MainActivity
+import org.cheva.miniprojecttodolist.dataclass.Driver
 
 class RegisterViewModel: ViewModel() {
 
