@@ -56,20 +56,21 @@ fun DashboardScreen(
     userName: String = "Testing",
     onNavigate: (Any) -> Unit
 ) {
-    Driver.driverConstruct()
     val taskList: List<Task> = Driver.taskList
     val taskCategoryList: List<TaskCategory> = Driver.taskCategoryList
 
-    Scaffold {
+    Box (
+        modifier = Modifier
+            .background(
+                color = Color(0xFF19304C)
+            ),
+        contentAlignment = Alignment.BottomCenter
+    ){
         Column (
             modifier = Modifier.fillMaxSize()
-                .background(
-                    color = Color(24, 48, 76, 255)
-                ),
+                .padding(top = 32.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ){
-            Spacer(Modifier.size(32.dp))
-
             //AppBar
             Row (
                 modifier = Modifier
@@ -121,8 +122,7 @@ fun DashboardScreen(
             //Body
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(LocalConfiguration.current.screenHeightDp.dp - 244.dp)
+                    .fillMaxSize()
             ){
                 //Upper Body
                 Column (
@@ -233,70 +233,67 @@ fun DashboardScreen(
                     }
                 }
             }
+        }
 
-            //NavBar
-            Column(
-                Modifier
-                    .fillMaxWidth()
-                    .height(144.dp)
+        //NavBar
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .height(144.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Bottom),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Box (
+                modifier = Modifier
+                    .shadow(
+                        elevation = 4.dp,
+                        spotColor = Color(0x63091111),
+                        ambientColor = Color(0x1A091111),
+                        shape = CircleShape
+                    )
                     .background(
-                        color = Color(0xFFF8FBFB)
+                        color = Color(0xFFF8FBFB),
+                        shape = RoundedCornerShape(size = 360.dp)
+                    )
+                    .clickable(
+                        enabled = true,
+                        onClick = {onNavigate(LoginScreen)}
                     ),
-                verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Bottom),
-                horizontalAlignment = Alignment.CenterHorizontally,
+                contentAlignment = Alignment.Center
             ) {
-                Box (
+                Image(
                     modifier = Modifier
-                        .shadow(
-                            elevation = 4.dp,
-                            spotColor = Color(0x63091111),
-                            ambientColor = Color(0x1A091111),
-                            shape = CircleShape
-                        )
-                        .background(
-                            color = Color(0xFFF8FBFB),
-                            shape = RoundedCornerShape(size = 360.dp)
-                        )
-                        .clickable(
-                            enabled = true,
-                            onClick = {onNavigate(LoginScreen)}
-                        ),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Image(
-                        modifier = Modifier
-                            .padding(5.dp)
-                            .size(20.dp),
-                        painter = painterResource(R.drawable.icon_add),
-                        contentDescription = ""
+                        .padding(5.dp)
+                        .size(20.dp),
+                    painter = painterResource(R.drawable.icon_add),
+                    contentDescription = ""
+                )
+            }
+            Box (
+                modifier = Modifier
+                    .padding(bottom = 32.dp)
+                    .shadow(
+                        elevation = 4.dp,
+                        spotColor = Color(0x63091111),
+                        ambientColor = Color(0x1A091111),
+                        shape = CircleShape
                     )
-                }
-                Box (
+                    .background(
+                        color = Color(0xFFF8FBFB),
+                        shape = RoundedCornerShape(size = 360.dp))
+                    .clickable(
+                        enabled = true,
+                        onClick = { }
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
                     modifier = Modifier
-                        .padding(bottom = 32.dp)
-                        .shadow(
-                            elevation = 4.dp,
-                            spotColor = Color(0x63091111),
-                            ambientColor = Color(0x1A091111),
-                            shape = CircleShape
-                        )
-                        .background(
-                            color = Color(0xFFF8FBFB),
-                            shape = RoundedCornerShape(size = 360.dp))
-                        .clickable(
-                            enabled = true,
-                            onClick = { }
-                        ),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Image(
-                        modifier = Modifier
-                            .padding(15.dp)
-                            .size(30.dp),
-                        painter = painterResource(R.drawable.icon_home),
-                        contentDescription = ""
-                    )
-                }
+                        .padding(15.dp)
+                        .size(30.dp),
+                    painter = painterResource(R.drawable.icon_home),
+                    contentDescription = ""
+                )
             }
         }
     }

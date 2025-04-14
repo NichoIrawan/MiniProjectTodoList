@@ -52,14 +52,14 @@ class Driver() {
             addTaskCategory(
                 title = "In-Progress",
                 image = R.drawable.icon_progress,
-                color1 = Color(0xFFEE68AF),
-                color2 = Color(0xFFEB479E)
+                color1 = Color(0xFF68A4EE),
+                color2 = Color(0xFF4791EB)
             )
             addTaskCategory(
                 title = "Done",
                 image = R.drawable.icon_done,
-                color1 = Color(0xFFEE68AF),
-                color2 = Color(0xFFEB479E)
+                color1 = Color(0xFF51EC72),
+                color2 = Color(0xFF17CF3F)
             )
 
             addTask(

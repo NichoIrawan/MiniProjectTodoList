@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import org.cheva.miniprojecttodolist.dashboard.DashboardScreen
+import org.cheva.miniprojecttodolist.dataclass.Driver
 import org.cheva.miniprojecttodolist.login.LoginScreen
 import org.cheva.miniprojecttodolist.login.LoginViewModel
 import org.cheva.miniprojecttodolist.navigation.DashboardScreen
@@ -23,6 +24,9 @@ import org.cheva.miniprojecttodolist.ui.theme.MiniProjectTodoListTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        //Dummy driver
+        Driver.driverConstruct()
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -30,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 NavHost(
                     navController = navController,
-                    startDestination = LoginScreen,
+                    startDestination = DashboardScreen("test"),
                     builder = {
                         composable<RegisterScreen> {
                             val viewModel = viewModel<RegisterViewModel>()
